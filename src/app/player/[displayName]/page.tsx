@@ -36,11 +36,10 @@ export default async function PlayerPage({ params }: { params: Promise<{ display
 				<div className="flex items-center gap-5">
 					{/*
 					 * Falls back to the lettered circle until the player has a model
-					 * uploaded (manual button in the plugin panel, or its one-time
-					 * automatic silent upload — see AuraPlugin#updateModelAsync). Most
-					 * players will see the placeholder briefly, players who've never
-					 * enabled online sync see it forever, and that's fine, it degrades
-					 * gracefully either way.
+					 * uploaded — manual-only, via the "Update 3D Model" button in the
+					 * plugin panel (see AuraPlugin#updateModelAsync). Most players who
+					 * never click it see the placeholder forever, and that's fine, it
+					 * degrades gracefully either way.
 					 */}
 					{player.hasModel ? (
 						<div className="size-20 shrink-0 overflow-hidden rounded-full ring-2 ring-primary/40">
