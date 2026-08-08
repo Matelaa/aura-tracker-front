@@ -4,6 +4,21 @@ Companion website for the [Aura Tracker](../aura-farming-claude) RuneLite plugin
 
 **Status:** implemented and connected end-to-end to the RuneLite plugin — validated with a real Jagex account. Deployed since 2026-08-08: [`aura-web-one-green.vercel.app`](https://aura-web-one-green.vercel.app), backed by [`aura-back-eta.vercel.app`](https://aura-back-eta.vercel.app) and Neon Postgres.
 
+## Screenshots
+
+<table>
+<tr>
+<td><img src="assets/leaderboard.png" width="400" alt="Leaderboard"/></td>
+<td><img src="assets/player-page.png" width="400" alt="Player page"/></td>
+</tr>
+<tr>
+<td align="center">Leaderboard</td>
+<td align="center">Player page</td>
+</tr>
+</table>
+
+Synthetic demo data (`aura-back/scripts/seed.ts`), not a real player's account.
+
 ## Stack
 
 Next.js 16 (App Router) + TypeScript + shadcn/ui + Tailwind. **No database of its own** — every read goes over HTTP to `aura-back` (`fetch`, server-side, in Server Components). See [SECURITY.md](SECURITY.md) for the threat model, including why that split is a real trust boundary.
