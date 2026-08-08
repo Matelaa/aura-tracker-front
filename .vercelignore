@@ -1,0 +1,9 @@
+# CLI-direct deploys (`vercel deploy` from local disk, no connected Git integration)
+# don't reliably honor .gitignore. Real env values belong in Vercel's own encrypted env
+# var store (`vercel env add`), not in uploaded files.
+.env*
+!.env*.example
+
+.claude/
+.idea/
+.vscode/
