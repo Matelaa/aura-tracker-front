@@ -23,12 +23,23 @@ export function proxy(request: NextRequest) {
 	// since the frontend/backend split (2026-08-07), not same-origin like every other
 	// data fetch on this site (those all happen server-side, in Server Components,
 	// which CSP doesn't apply to at all).
+	//
+	// connect-src also needs `blob:` — found by actually loading a real player page
+	// with an embedded texture and inspecting the console, not by review. Three.js's
+	// GLTFLoader (inside <model-viewer>) extracts an embedded PNG from the .glb by
+	// wrapping its bytes in a Blob and fetching that blob: URL to decode it as an
+	// image; without this, the fetch is silently blocked and the browser falls back to
+	// the material's flat white base color, i.e. a textured item (a cape, in the case
+	// that surfaced this) renders solid white instead of its real texture. img-src
+	// already allowed blob: for a different reason (see the CSP incident this project's
+	// own SECURITY.md documents) — that alone wasn't enough, since this is a fetch, not
+	// an <img> load.
 	const cspHeader = `
 		default-src 'self';
 		script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ""};
 		style-src 'self' 'unsafe-inline';
 		img-src 'self' blob: data:;
-		connect-src 'self' ${appConfig.backendUrl};
+		connect-src 'self' ${appConfig.backendUrl} blob:;
 		font-src 'self';
 		object-src 'none';
 		base-uri 'self';

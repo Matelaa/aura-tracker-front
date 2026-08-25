@@ -31,6 +31,12 @@ A static top-level `import "@google/model-viewer"` gets evaluated during Next.js
 
 **Fix**: both `PlayerModelViewer` and `RankBadgeModel` import it dynamically inside `useEffect` (`import("@google/model-viewer")`) instead of as a top-level import — `useEffect` only ever runs in the browser, so the package (and its `self` reference) never gets evaluated anywhere it could fail.
 
+## `connect-src` missing `blob:` (found by actually looking at a real textured model, not by review)
+
+A player wearing a textured item (surfaced with a Fire Cape) rendered that item as flat white instead of its real texture — but the uploaded `.glb` itself was confirmed correct (extracted and inspected byte-for-byte). The browser console showed the real cause: `THREE.GLTFLoader` extracts an embedded PNG from the binary `.glb` by wrapping its bytes in a `Blob` and fetching the resulting `blob:` URL to decode it as an image. `img-src` already allowed `blob:` (for a different, unrelated reason), but that fetch is gated by `connect-src`, which didn't — so the browser silently blocked it, and the material fell back to its flat white base color.
+
+**Fix**: added `blob:` to `connect-src` in `src/proxy.ts`.
+
 ## `loading="eager"` on the profile page's avatar (found by actually testing, not by review)
 
 `<model-viewer>`'s default (`loading="auto"`) only starts fetching once its own internal `IntersectionObserver` reports the element is in the viewport — and for the profile page's 80px avatar, that check never reliably fired, even though the element was genuinely on-screen. Every render logged model-viewer's own internal `$updateSource ... BAILING OUT EARLY` and no request for the model ever left the browser. `loading="eager"` skips that check entirely, which is also just the correct choice for an always-visible profile avatar (a single element, not a list).
