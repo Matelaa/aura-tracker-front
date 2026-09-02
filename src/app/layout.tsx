@@ -40,7 +40,7 @@ const runescape = localFont({
 
 export const metadata: Metadata = {
 	title: "Aura Leaderboard",
-	description: "Prove who farms Aura the hardest at the Grand Exchange. Unofficial, self-reported bragging rights for Aura Tracker.",
+	description: "Farm Aura, mog betas — the unofficial leaderboard for standing completely still at the Grand Exchange.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -70,8 +70,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 							Aura Leaderboard
 						</Link>
 						<p className="mt-2 text-sm text-muted-foreground max-w-lg">
-							Think you can out-farm everyone at the Grand Exchange?
-							Prove it — bragging rights only, no official ranking.
+							Farm Aura, mog betas. Zero skill, zero effort, maximum aura gained
+							while everyone else is out here moving around like it means something.
 						</p>
 					</div>
 				</header>
