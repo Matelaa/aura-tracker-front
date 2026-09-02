@@ -1,6 +1,6 @@
 # Aura Leaderboard — Next.js + shadcn/ui
 
-Companion website for the [Aura Tracker](../aura-farming-claude) RuneLite plugin, backed by [`aura-back`](../aura-back). Ranking **community, unofficial** — see the notice on every page and the anti-cheat section in [`aura-back/SECURITY.md`](../aura-back/SECURITY.md).
+Companion website for the [Aura Tracker](https://runelite.net/plugin-hub/show/aura-tracker) RuneLite plugin, backed by `aura-back` (private repo). Ranking **community, unofficial** — see the notice on every page and the anti-cheat section in `aura-back`'s SECURITY.md.
 
 **Status:** implemented and connected end-to-end to the RuneLite plugin — validated with a real Jagex account. Deployed since 2026-08-08: [`aura-web-one-green.vercel.app`](https://aura-web-one-green.vercel.app), backed by [`aura-back-eta.vercel.app`](https://aura-back-eta.vercel.app) and Neon Postgres.
 
@@ -19,7 +19,7 @@ Companion website for the [Aura Tracker](../aura-farming-claude) RuneLite plugin
 </tr>
 </table>
 
-The sidebar panel is from the [Aura Tracker](../aura-farming-claude) plugin itself. The leaderboard screenshot is the real, live production ranking; the player page still shows synthetic demo data (`aura-back/scripts/seed.ts`), not a real player's account.
+The sidebar panel is from the [Aura Tracker](https://runelite.net/plugin-hub/show/aura-tracker) plugin itself. The leaderboard screenshot is the real, live production ranking; the player page still shows synthetic demo data (`aura-back/scripts/seed.ts`), not a real player's account.
 
 ## Stack
 
