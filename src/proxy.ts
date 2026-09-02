@@ -34,9 +34,19 @@ export function proxy(request: NextRequest) {
 	// already allowed blob: for a different reason (see the CSP incident this project's
 	// own SECURITY.md documents) — that alone wasn't enough, since this is a fetch, not
 	// an <img> load.
+	//
+	// script-src needs 'wasm-unsafe-eval' — found the same way, by loading the
+	// leaderboard/player page and seeing every rank badge silently fail to render its
+	// 3D model. <model-viewer> compiles a WebAssembly module (its glTF/geometry
+	// decoder) via WebAssembly.instantiate, which CSP gates independently of
+	// 'strict-dynamic': without this token the compile throws a CSP CompileError and
+	// the badge falls back to nothing rendering at all, not even the flat-white
+	// fallback the missing-texture case above hits. This token only permits compiling
+	// WebAssembly, not JS eval()/Function() — unlike 'unsafe-eval', which dev already
+	// carries, this is safe to also ship in production.
 	const cspHeader = `
 		default-src 'self';
-		script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ""};
+		script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'wasm-unsafe-eval'${isDev ? " 'unsafe-eval'" : ""};
 		style-src 'self' 'unsafe-inline';
 		img-src 'self' blob: data:;
 		connect-src 'self' ${appConfig.backendUrl} blob:;
