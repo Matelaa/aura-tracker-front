@@ -19,7 +19,7 @@ Companion website for the [Aura Tracker](../aura-farming-claude) RuneLite plugin
 </tr>
 </table>
 
-The sidebar panel is from the [Aura Tracker](../aura-farming-claude) plugin itself. Leaderboard/player screenshots show synthetic demo data (`aura-back/scripts/seed.ts`), not a real player's account.
+The sidebar panel is from the [Aura Tracker](../aura-farming-claude) plugin itself. The leaderboard screenshot is the real, live production ranking; the player page still shows synthetic demo data (`aura-back/scripts/seed.ts`), not a real player's account.
 
 ## Stack
 
