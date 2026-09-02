@@ -8,16 +8,18 @@ Companion website for the [Aura Tracker](../aura-farming-claude) RuneLite plugin
 
 <table>
 <tr>
-<td><img src="assets/leaderboard.png" width="400" alt="Leaderboard"/></td>
-<td><img src="assets/player-page.png" width="400" alt="Player page"/></td>
+<td><img src="assets/panel.png" width="220" alt="Sidebar panel"/></td>
+<td><img src="assets/leaderboard.png" width="340" alt="Leaderboard"/></td>
+<td><img src="assets/player-page.png" width="340" alt="Player page"/></td>
 </tr>
 <tr>
+<td align="center">Sidebar panel</td>
 <td align="center">Leaderboard</td>
 <td align="center">Player page</td>
 </tr>
 </table>
 
-Synthetic demo data (`aura-back/scripts/seed.ts`), not a real player's account.
+The sidebar panel is from the [Aura Tracker](../aura-farming-claude) plugin itself. Leaderboard/player screenshots show synthetic demo data (`aura-back/scripts/seed.ts`), not a real player's account.
 
 ## Stack
 
